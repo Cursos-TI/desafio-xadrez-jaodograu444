@@ -1,51 +1,67 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+void Torre(int casas)
+{
+    if (casas > 0)
+    {
+        printf("Direita \n");
+        Torre(casas - 1);
+    }
+}
 
+void Rainha(int casas)
+{
+    if (casas > 0)
+    {
+        printf("Esquerda \n");
+        Rainha(casas - 1);
+    }
+}
 
+void Bispo(int casas)
+{
+    if (casas <= 0)
+        return;
 
+    // loop externo
+    printf("Cima, ");
 
+    // loop interno
+    for (int i = 0; i < 1; i++)
+    {
+        printf("Direita\n");
+    }
+
+    Bispo(casas - 1);
+}
 
 int main()
 {
-    int Bispo = 1;
-    int Torre = 1;
-    int Rainha = 1;
-    int Cavalo = 1;
 
     printf("Rainha: \n");
-    for (Rainha; Rainha <= 8; Rainha++)
-    {
-        printf("Esquerda \n");
-    }
-    
+    Rainha(8);
+
     printf("Torre: \n");
-    while (Torre <= 5) {
-        printf("Direita \n");
-        Torre++;
-    }
-    
+    Torre(5);
+
     printf("Bispo: \n");
-    do {
-        printf("Cima, direita \n");
-        Bispo++;
-    } while (Bispo <= 5);
+    Bispo(5);
 
     printf("\n");
 
     printf("Cavalo: \n");
-    for (Cavalo = 1; Cavalo < 2; Cavalo++)
+    for (int CimaCavalo = 0; CimaCavalo < 2; CimaCavalo++)
     {
-        for (int i = 0; i < 2; i++)
+        printf("Cima\n");
+
+        for (int DireitaCavalo = 0; DireitaCavalo < 1; DireitaCavalo++)
         {
-            printf("Baixo\n");
+            if (CimaCavalo == 1) 
+            {
+                printf("Direita\n");
+            }
         }
-
-        printf("Esquerda\n");
     }
-
     return 0;
 }
 
